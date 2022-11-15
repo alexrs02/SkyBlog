@@ -1,0 +1,28 @@
+body{
+    background-color: #F0F3EA !important;
+}
+
+img{
+    width: 40px;
+    height: 40px;
+    margin-right: 4rem;
+}
+
+#btn-user:hover{
+    cursor: pointer ;
+}
+#btn-user:active{
+    cursor:progress;
+}
+
+#table{
+    display: none;
+}
+
+.linkpost:hover{
+    cursor: pointer ;
+    text-decoration:underline;
+}
+.linkpost{
+    color: rgb(57, 152, 247);
+}
