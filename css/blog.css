@@ -3,9 +3,15 @@ body{
 }
 
 img{
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     margin-right: 4rem;
+}
+
+#navbar{
+    margin: 1rem;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #btn-user:hover{
@@ -17,6 +23,14 @@ img{
 
 #table{
     display: none;
+    margin: auto;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 96%;
+}
+
+.container{
+    margin-left: 1rem !important;
 }
 
 .linkpost:hover{
@@ -25,4 +39,31 @@ img{
 }
 .linkpost{
     color: rgb(57, 152, 247);
+}
+
+.userpost:hover{
+    cursor: pointer ;
+    text-decoration:underline;
+}
+
+.divP{
+    background-color: rgb(236, 236, 236);
+    width: 60rem;
+    padding: 1rem;
+    margin: 1rem;
+
+    border-radius: .5rem;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+}
+
+.h1P{
+    font-size: 2rem;
+    color: rgb(57, 152, 247);
+}
+.titleP{
+    font-size: 1.5rem;
+}
+.bodyP{
+    font-size: 1rem;
+    color: gray;
 }
