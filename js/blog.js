@@ -46,21 +46,21 @@ const pintar = (tbody) => {
         .then((response) => response.json())
         .then((json) => {
             json.forEach(j => {
-                var tr = document.createElement("tr")
-                var trclase = document.createAttribute('class')
-                var trid = document.createAttribute('id')
+                let tr = document.createElement("tr")
+                let trclase = document.createAttribute('class')
+                let trid = document.createAttribute('id')
                 trclase.value = 'trclase'
                 trid.value = '' + j.id
                 tr.setAttributeNode(trclase)
                 tr.setAttributeNode(trid)
-                var td1 = document.createElement("td")
-                var td2 = document.createElement("td")
-                var td3 = document.createElement("td")
-                var td4 = document.createElement("td")
-                var claseP = document.createAttribute("class")
-                var claseU = document.createAttribute("class")
-                var funP = document.createAttribute("onclick")
-                var funU = document.createAttribute("onclick")
+                let td1 = document.createElement("td")
+                let td2 = document.createElement("td")
+                let td3 = document.createElement("td")
+                let td4 = document.createElement("td")
+                let claseP = document.createAttribute("class")
+                let claseU = document.createAttribute("class")
+                let funP = document.createAttribute("onclick")
+                let funU = document.createAttribute("onclick")
                 claseP.value = "linkpost"
                 claseU.value = "userpost"
                 funP.value = 'seePost(' + j.id + ')'
@@ -69,10 +69,10 @@ const pintar = (tbody) => {
                 td4.setAttributeNode(funP)
                 td2.setAttributeNode(claseU)
                 td2.setAttributeNode(funU)
-                var texto1 = document.createTextNode(j.id)
-                var texto2 = document.createTextNode(j.username)
-                var texto3 = document.createTextNode(j.email)
-                var texto4 = document.createTextNode('see post')
+                let texto1 = document.createTextNode(j.id)
+                let texto2 = document.createTextNode(j.username)
+                let texto3 = document.createTextNode(j.email)
+                let texto4 = document.createTextNode('see post')
                 td1.appendChild(texto1)
                 td2.appendChild(texto2)
                 td3.appendChild(texto3)
@@ -90,35 +90,36 @@ const pintarPosts = (id, main) => {
     fetch(`https://jsonplaceholder.typicode.com/posts`)
         .then((response) => response.json())
         .then((json) => {
-            json.forEach(j => {
-                if (j.userId === id) {
-                    var div = document.createElement('div')
-                    var divclass = document.createAttribute('class')
-                    var h1class = document.createAttribute('class')
-                    var titleclass = document.createAttribute('class')
-                    var bodyclass = document.createAttribute('class')
-                    divclass.value = 'divP'
-                    h1class.value = 'h1P'
-                    titleclass.value = 'titleP'
-                    bodyclass.value = 'bodyP'
-                    var h1 = document.createElement('h1')
-                    var titulo = document.createElement('h2')
-                    var body = document.createElement('h3')
-                    var text_h1 = document.createTextNode('Posts off ' + j.userId + ' Id user')
-                    var text_title = document.createTextNode(j.title)
-                    var text_body = document.createTextNode(j.body)
-                    div.setAttributeNode(divclass)
-                    h1.setAttributeNode(h1class)
-                    titulo.setAttributeNode(titleclass)
-                    body.setAttributeNode(bodyclass)
-                    h1.appendChild(text_h1)
-                    titulo.appendChild(text_title)
-                    body.appendChild(text_body)
-                    div.appendChild(h1)
-                    div.appendChild(titulo)
-                    div.appendChild(body)
-                    main.appendChild(div)
-                }
+            const filtrar_id = json.filter(u => {
+                return u.userId === id
+            }).slice(0, 5)
+            filtrar_id.forEach(j => {
+                let div = document.createElement('div')
+                let divclass = document.createAttribute('class')
+                let h1class = document.createAttribute('class')
+                let titleclass = document.createAttribute('class')
+                let bodyclass = document.createAttribute('class')
+                divclass.value = 'divP'
+                h1class.value = 'h1P'
+                titleclass.value = 'titleP'
+                bodyclass.value = 'bodyP'
+                let h1 = document.createElement('h1')
+                let titulo = document.createElement('h2')
+                let body = document.createElement('h3')
+                let text_h1 = document.createTextNode('Posts off ' + j.userId + ' Id user')
+                let text_title = document.createTextNode(j.title)
+                let text_body = document.createTextNode(j.body)
+                div.setAttributeNode(divclass)
+                h1.setAttributeNode(h1class)
+                titulo.setAttributeNode(titleclass)
+                body.setAttributeNode(bodyclass)
+                h1.appendChild(text_h1)
+                titulo.appendChild(text_title)
+                body.appendChild(text_body)
+                div.appendChild(h1)
+                div.appendChild(titulo)
+                div.appendChild(body)
+                main.appendChild(div)
             })
         })
 }
@@ -127,6 +128,6 @@ const pintarUsers = (id) => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((response) => response.json())
         .then((user) => {
-            
+
         })
 }
