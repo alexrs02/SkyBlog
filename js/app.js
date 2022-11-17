@@ -15,7 +15,7 @@ const validar = (name, passwd) => {
     .then ((json) => {
       json.forEach(j => {
         if(j.username === name && j.address.zipcode === passwd){
-          location.replace("./views/blog.html")
+          window.open("./views/blog.html")
         }else{
           error.style.display = "block"
         }

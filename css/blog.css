@@ -9,6 +9,9 @@ img {
 }
 
 #navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3em;
   margin: 1rem;
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -16,6 +19,16 @@ img {
 
 #btn-user:hover {
   cursor: pointer;
+}
+#btn-user:active {
+  cursor: progress;
+}
+
+#btn-post:hover {
+  cursor: pointer;
+}
+#btn-post:active {
+  cursor: progress;
 }
 
 #table {
@@ -56,6 +69,13 @@ img {
   font-size: 2rem;
   color: rgb(57, 152, 247);
 }
+.h1P:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.h1P:active {
+  cursor: progress;
+}
 
 .titleP {
   font-size: 1.5rem;
@@ -64,4 +84,79 @@ img {
 .bodyP {
   font-size: 1rem;
   color: gray;
+}
+
+.user-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+  border-radius: 0.4rem;
+  width: 40vw;
+  height: 65vh;
+  margin: auto;
+}
+.user-container .divUser {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+}
+.user-container .divUser .parrafo {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: row;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.user-container .divUser .parrafo p {
+  margin-top: 0.2rem;
+  font-size: 1.1rem;
+}
+.user-container .divUser .parrafoA {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: row;
+  -moz-column-gap: 0;
+       column-gap: 0;
+}
+.user-container .divUser .parrafoA p {
+  margin-top: 0.2rem;
+  font-size: 1.1rem;
+}
+.user-container .divUser .parrafoA .divAdress {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+.user-container .divUser .parrafoPost {
+  width: 10%;
+  padding: 1rem 0;
+}
+.user-container .divUser .parrafoPost h4 {
+  color: rgb(57, 152, 247);
+}
+.user-container .divUser .parrafoPost h4:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.user-container .divUser .parrafoPost h4:active {
+  cursor: progress;
+}
+
+#btn-change {
+  background-color: #212529;
+  border: none;
+  display: none;
+  position: absolute;
+  right: 4rem;
+  bottom: 4rem;
+}
+#btn-change:hover {
+  transform: translateY(-1px);
 }/*# sourceMappingURL=blog.css.map */
