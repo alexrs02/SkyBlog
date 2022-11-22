@@ -133,7 +133,7 @@ const seePost = (id) => {
 }
 
 
-// Función para delimitar los posts del usuario en la pagina visualmente
+// Función para delimitar los posts del usuario en la siguiente pagina visualmente
 
 const changeArrayS = () => {
     try {
@@ -151,6 +151,8 @@ const changeArrayS = () => {
 
     seePost(idUser)
 }
+
+// Función para delimitar los posts del usuario en la anterior pagina visualmente
 
 const changeArrayR = () => {
     try {
