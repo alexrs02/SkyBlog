@@ -31,10 +31,6 @@ let idUser = 0
 btnUser.addEventListener('click', function (evento) {
     start = 0
     end = 5
-    const btnNext = document.querySelector("#btn-changer")
-    const btnBack = document.querySelector("#btn-changes")
-    btnNext.style.display = "none"
-    btnBack.style.display = "none"
     try {
         const div = document.querySelectorAll(".divP")
         for (let i = 0; i < div.length; i++) {
@@ -46,6 +42,10 @@ btnUser.addEventListener('click', function (evento) {
         }
         const usercont = document.querySelector(".user-container")
         usercont.style.display = "none"
+        const btnNext = document.querySelector("#btn-changer")
+        const btnBack = document.querySelector("#btn-changes")
+        btnNext.style.display = "none"
+        btnBack.style.display = "none"
     } catch {
         console.log('Algo salio mal')
     }
