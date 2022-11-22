@@ -1,18 +1,40 @@
+
+// Recojo los datos necesarios para trabajar con el html
+
 const btnUser = document.querySelector('#btn-user')
 const table = document.querySelector('#table')
 const tablebody = document.querySelector('tbody')
 const btnPost = document.querySelector('#btn-post')
 const main = document.querySelector('main')
 
+
+
+// Recoger Parametros de la url para una sesion mas personalizada:
+
+const login_user = document.querySelector('#login-user')
+
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var anuncioParam = urlParams.get('name');
+
+login_user.innerHTML = anuncioParam
+
+// Parametros para delimitar los posts
+
 let start = 0
 let end = 5
 let idUser = 0
 
+
+// Funcion a la esucha para pintar la tabla de usuarios
+
 btnUser.addEventListener('click', function (evento) {
     start = 0
     end = 5
-    const btnNext = document.querySelector(".btn")
+    const btnNext = document.querySelector("#btn-changer")
+    const btnBack = document.querySelector("#btn-changes")
     btnNext.style.display = "none"
+    btnBack.style.display = "none"
     try {
         const div = document.querySelectorAll(".divP")
         for (let i = 0; i < div.length; i++) {
@@ -32,11 +54,15 @@ btnUser.addEventListener('click', function (evento) {
 
 })
 
+// Funcion a la esucha para pintar los posts
+
 btnPost.addEventListener('click', function (evento) {
     start = 0
     end = 5
-    const btnNext = document.querySelector(".btn")
+    const btnNext = document.querySelector("#btn-changer")
+    const btnBack = document.querySelector("#btn-changes")
     btnNext.style.display = "none"
+    btnBack.style.display = "none"
     try {
         const div = document.querySelectorAll(".divP")
         for (let i = 0; i < div.length; i++) {
@@ -55,16 +81,23 @@ btnPost.addEventListener('click', function (evento) {
     pintarTodosPosts(main)
 })
 
+
+// Función para obtener los usuarios
+
 const seeUser = (id) => {
     const tr = document.querySelectorAll(".trclase")
     const usercont = document.querySelector(".user-container")
-    try{
+    try {
         const div = document.querySelectorAll(".divP")
         for (let i = 0; i < div.length; i++) {
             div[i].remove()
         }
+        const btnNext = document.querySelector("#btn-changer")
+        const btnBack = document.querySelector("#btn-changes")
+        btnNext.style.display = "none"
+        btnBack.style.display = "none"
     }
-    catch{
+    catch {
         console.log('Algo a pasado')
     }
     for (let i = 0; i < tr.length; i++) {
@@ -76,39 +109,68 @@ const seeUser = (id) => {
 
 }
 
+// Función para ver los posts de un id
+
 const seePost = (id) => {
-    try{
+    try {
         const usercont = document.querySelector(".user-container")
         usercont.style.display = "none"
     }
-    catch{
+    catch {
         console.log('Algo a pasado')
     }
     idUser = id
-    const btnNext = document.querySelector(".btn")
+    const btnNext = document.querySelector("#btn-changer")
+    const btnBack = document.querySelector("#btn-changes")
     btnNext.style.display = "block"
+    btnBack.style.display = "block"
     const tr = document.querySelectorAll(".trclase")
     for (let i = 0; i < tr.length; i++) {
         tr[i].remove()
     }
     table.style.display = "none"
-    pintarPosts(id, main,start,end)
+    pintarPosts(id, main, start, end)
 }
 
-const changeArray = () =>{
-    try{
+
+// Función para delimitar los posts del usuario en la pagina visualmente
+
+const changeArrayS = () => {
+    try {
         const div = document.querySelectorAll(".divP")
         for (let i = 0; i < div.length; i++) {
             div[i].remove()
         }
-    }catch{
+    } catch {
         console.log('Algo salio mal')
     }
-    start = start + 5
-    end = end + 5
+    if (end != 10) {
+        start = start + 5
+        end = end + 5
+    }
+
     seePost(idUser)
 }
 
+const changeArrayR = () => {
+    try {
+        const div = document.querySelectorAll(".divP")
+        for (let i = 0; i < div.length; i++) {
+            div[i].remove()
+        }
+    } catch {
+        console.log('Algo salio mal')
+    }
+    if (start != 0) {
+        start = start - 5
+        end = end - 5
+    }
+
+    seePost(idUser)
+}
+
+
+// Función para obtener los datos para la tabla
 
 const pintar = (tbody) => {
     fetch(`https://jsonplaceholder.typicode.com/users`)
@@ -155,7 +217,9 @@ const pintar = (tbody) => {
         })
 }
 
-const pintarPosts = (id, main,start,end) => {
+// Función para obtener los posts de un id
+
+const pintarPosts = (id, main, start, end) => {
     fetch(`https://jsonplaceholder.typicode.com/posts`)
         .then((response) => response.json())
         .then((json) => {
@@ -196,6 +260,8 @@ const pintarPosts = (id, main,start,end) => {
         })
 }
 
+// Funcion para obtener todos los posts
+
 const pintarTodosPosts = (main) => {
     fetch(`https://jsonplaceholder.typicode.com/posts`)
         .then((response) => response.json())
@@ -234,6 +300,7 @@ const pintarTodosPosts = (main) => {
         })
 }
 
+// Función para obtener los datos de un id
 
 const pintarUsers = (id) => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
